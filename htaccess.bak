@@ -1,0 +1,24 @@
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+Options -Indexes
+DirectoryIndex index.php       
+order deny,allow
+
+
+
+#RewriteEngine On
+#RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f		#ファイルが存在しない場合
+RewriteCond %{REQUEST_FILENAME} !-d	#ディレクトリが存在しない場合
+#RewriteRule . /index.php [L]			#download.phpにリダイレクト
+
+
+
+RewriteEngine on
+
+#RewriteBase /org/Sample/uploader/
+#RewriteCond %{REQUEST_URI} .download/(.*)\
+#RewriteRule ^(.*)$ .dowload.php [R=301,L]
+RewriteRule . - [L]
