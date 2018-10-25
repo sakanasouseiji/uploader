@@ -35,8 +35,11 @@ $REMOTE_ADDR=$_SERVER['REMOTE_ADDR'];
 $SCRIPT_NAME=$_SERVER['SCRIPT_NAME'];
 $SERVER_NAME=$_SERVER['SERVER_NAME'];
 $USER_AGENT=$_SERVER['HTTP_USER_AGENT'];
+
 //macアドレスの取得
-$MAC_ADDR=exec('arp '.$REMOTE_ADDR);
+//実行不可の場合は空欄
+$MAC_ADDR=@exec('arp '.$REMOTE_ADDR) or $MAC_ADDR="";
+
 //$to="sakanasouseiji_0126@yahoo.co.jp";
 $to="sakanasouseiji@gmail.com";
 $subject="uploaderアクセス確認しました\n";
