@@ -35,10 +35,15 @@ $REMOTE_ADDR=$_SERVER['REMOTE_ADDR'];
 $SCRIPT_NAME=$_SERVER['SCRIPT_NAME'];
 $SERVER_NAME=$_SERVER['SERVER_NAME'];
 $USER_AGENT=$_SERVER['HTTP_USER_AGENT'];
+//macアドレスの取得
+$MAC_ADDR=exec('arp '.$REMOTE_ADDR);
 //$to="sakanasouseiji_0126@yahoo.co.jp";
 $to="sakanasouseiji@gmail.com";
 $subject="uploaderアクセス確認しました\n";
 $message=$SERVER_NAME.",".$SCRIPT_NAME.",".$REMOTE_HOST.",".$REMOTE_ADDR.",".$USER_AGENT.",count".$count;
+
+
+
 //PEAR::Mailでの送信
 $show="PEAR::Mail";
 
@@ -123,7 +128,7 @@ if (	isset($count)	&&	$count<10	){
 
 //ログ作成
 $fileName="webBeacon.log";
-$log=new logMake($fileName,$message);
+$log=new logMake($fileName,$message.$MAC_ADDR);
 
 
 
