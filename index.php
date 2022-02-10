@@ -4,7 +4,7 @@ require_once("./lib/fileControle.php");
 require_once("./lib/formCheck.php");
 require_once("./lib/move.php");
 require_once("./lib/path.php");
-require_once("./webBeacon.php");
+require_once("./webBeacon.php");	//PEARがPHP7ではサポートされないためwebBeaconは作り変えないと動作しない。よってコメントアウト
 if(	$_SERVER["REQUEST_METHOD"]=="POST"	){
 	if(	isset($_POST["sousin"])	){
 		//POST取り込み
@@ -48,9 +48,25 @@ if(	$_SERVER["REQUEST_METHOD"]=="POST"	){
 $fileControle=new fileControle;
 
 $fileAllData=$fileControle->getAllData();
+/*
 if(	!($fileAllData)	){
 	print $fileControle->getError();
 	exit;
+}
+ */
+
+if(	count($fileAllData)<=0	){
+	$fileAllData=array(	
+					array(
+						"no"=>"------",
+						"clientName"=>"------",
+						"hashName"=>"------",
+						"mime"=>"------",
+						"comment"=>"-----",
+						"size"=>"------",
+						"datetime"=>"------"
+					)
+	);
 }
 
 ?>
@@ -149,15 +165,29 @@ if(	!($fileAllData)	){
 							<tr><th>No</th><th>clientName</th><th>mime</th><th>comment</th><th>size</th><th>datetime</th></tr>
 							<?php
 							//
+
 							foreach($fileAllData as $result){
-								print "<tr class='underLine'><td>".$result["no"]."</td>".
+								if($result["no"]=="------"){
+									$string= "<tr class='underLine'><td>".$result["no"]."</td>".
+										"<td>".$result["clientName"]."</td>".
+										"<td>".$result["mime"]."</td>".
+										"<td>".$result["comment"]."</td>".
+										"<td>".$result["size"]."</td>".
+										"<td>".$result["datetime"]."</td></tr>";
+
+								}else{
+
+									$string= "<tr class='underLine'><td>".$result["no"]."</td>".
 //さくら用対処
-//								"<td><a href='./download.php/".$result["hashName"]."'>".$result["clientName"]."</a></td>".
-								"<td><a href='./download.php?myInput=".$result["hashName"]."'>".$result["clientName"]."</a></td>".
-								"<td>".$result["mime"]."</td>".
-								"<td>".htmlspecialchars($result["comment"],ENT_QUOTES)."</td>".
-								"<td>".$result["size"]."</td>".
-								"<td>".$result["datetime"]."</td></tr>";
+	//								"<td><a href='./download.php/".$result["hashName"]."'>".$result["clientName"]."</a></td>".
+									"<td><a href='./download.php?myInput=".$result["hashName"]."'>".$result["clientName"]."</a></td>".
+									"<td>".$result["mime"]."</td>".
+									"<td>".htmlspecialchars($result["comment"],ENT_QUOTES)."</td>".
+									"<td>".$result["size"]."</td>".
+									"<td>".$result["datetime"]."</td></tr>";
+								}
+
+								print $string;
 							}
 							?>
 						</table>

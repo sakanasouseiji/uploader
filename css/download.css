@@ -1,0 +1,10 @@
+/*動かない側の要素*/
+div#download{
+	float:left;
+	width:840px;
+	margin:0px;
+	padding:0px;
+}
+div#download table{
+	text-align:left;
+}

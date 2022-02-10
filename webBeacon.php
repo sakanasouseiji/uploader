@@ -21,8 +21,12 @@ setcookie('uploaderCount', $count, time() + 60*60*24*365, "/");
 
 //他にもCookieで任意のkey, valueを保存させておくことができる
 //PEAR::Mail読み込み
+/*
 require_once("Mail.php");
 require_once("Mail/mime.php");
+ */
+//今はcomposerになったので
+require_once(__DIR__."/vendor/autoload.php");
 //mail送信
 $REMOTE_HOST=gethostbyaddr($_SERVER["REMOTE_ADDR"]);
 /*if(isset($_SERVER['REMOTE_HOST'])){
@@ -62,9 +66,9 @@ $show="PEAR::Mail";
 	);
 */
 //レンタルサーバー付属のメール利用パターン
-$from="footprint@qgyhc680.webcrow.jp";
+$from="sabakan@sabakan.info";
 $para=array(
-	"host"=>"tls://sv1.webcrow-plus.netowl.jp",
+	"host"=>"tls://sv52.star.ne.jp",
 	"port"=>465,
 	"auth"=>true,
 	"username"=>$from,
@@ -97,6 +101,8 @@ $para=array(
 */
 //Mailオブジェクト作製		
 
+
+/*
 //$countが10以下の場合のみメールを送信する
 if (	isset($count)	&&	$count<10	){
 
@@ -128,7 +134,7 @@ if (	isset($count)	&&	$count<10	){
 	//		print "mailObject生成失敗<br>";
 	}
 }
-
+*/
 //ログ作成
 $fileName="webBeacon.log";
 $log=new logMake($fileName,$message.$MAC_ADDR);

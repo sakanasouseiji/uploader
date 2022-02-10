@@ -1,0 +1,97 @@
+p,h1,h2,h3,pre{
+	margin:0;
+	padding:0;
+}
+div{
+	overflow:hidden;
+}
+html{
+	height:100%;
+}
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+	background-color:#ccc;
+}
+div#header{
+	width:100%;
+	height:40px;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+*html div#container{
+	height:100%;
+}
+div#container{
+	min-height:100%;
+	position:relative;
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+body  #container{
+	height:auto;
+}
+div#main{
+	margin:0px auto;
+	padding:0px;
+	padding-bottom:50px;
+	width:1024px;
+}
+
+div#footer{
+	bottom:0px;
+	position:absolute;
+	clear:both;
+	width:100%;
+	height:30px;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+#infomation{
+	margin:10px;
+	padding:10px;
+	width:100%;
+	height:60px; 
+}
+div#menuArea{
+	width:100%;
+	margin:0px 0px 10px 0px;
+	padding:0px;
+	background-color:#0c083b;
+	height:30px;
+}
+div#menuArea ul{
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+	margin-top:1px;
+	padding:0px;
+}
+div#menuArea ul li {
+	position:relative;
+	top:auto;
+	list-style:none;
+	display:block;
+	padding:0px 20px;
+	margin:0px;
+	float:left;
+	height:100%;;
+	border:none;
+	border-left:solid 1px white;
+}
+div#menuArea ul li:hover{
+	background-color:#827fb2;
+}
+div#menuArea ul a li{
+	padding-top:5px;
+	display:block;
+	text-decoration:none;
+	color:white;
+}
+

@@ -1,0 +1,11 @@
+{
+    "name": "bitnami/uploader",
+    "autoload": {
+        "psr-4": {
+            "Bitnami\\Uploader\\": "src/"
+        }
+    },
+    "require": {
+        "pear/mail": "^1.4"
+    }
+}
