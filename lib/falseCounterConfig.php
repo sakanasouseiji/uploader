@@ -1,18 +1,21 @@
 <?php
-
 /*
 $host="localhost";
 $user="uploaderUser";
 $password="oomori200";
 $db="uploaderUser";
  */
-
+/*
 $host="mysql6.star.ne.jp";
 $user="sabakan_uploader";
 $password="oomori200";
 $db="sabakan_uploader";
+ */
 
-
+$host="localhost";
+$user="uploaderUser";
+$password="oomori200";
+$db="uploader";
 
 $blackListTable="falseCounterBlackListTable";
 $countTable="falseCounterCountTable";
